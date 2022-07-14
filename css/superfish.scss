@@ -2,6 +2,7 @@
 	Superfish SCSS
 */
 .primary-nav {
+	margin-top: 20px;
 	@include breakpoint(ipad_p) { display:none;}
 	@include breakpoint(iphone_p) { display:none;}
 	ul { list-style:none; margin:0; padding:0;
@@ -34,7 +35,7 @@
 .primary-nav ul li li li li.sfHover ul { left:248px; /* match .nav ul width */ top: 0;  }
 
 /* Primary Navigation Skin  */
-.primary-nav { background:$secondary; width:100%; border-top:1px #f0f0f0 solid;
+.primary-nav {
 	&.left { padding-left:8px;}
 
 	ul { width:100%; display:table;

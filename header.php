@@ -56,13 +56,11 @@
                             <p><?php the_field('contact_branch3','27'); ?>: <?php the_field('contact_mobile3', 27); ?></p>
                         </div>
                     <?php endif; ?>
+
+                    <div class="primary-nav clearfix">
+                        <?php wp_nav_menu(array('menu' => 'Main Menu', 'items_wrap' => '<ul>%3$s</ul>', 'container' => false, 'walker' => new clean_walker)); ?>
+                    </div><!-- navigation -->
                 </div><!-- topbar -->
             </div><!-- header-right -->
         </div>
     </div><!-- header -->
-
-    <div class="primary-nav clearfix">
-        <div class="box">
-            <?php wp_nav_menu(array('menu' => 'Main Menu', 'items_wrap' => '<ul>%3$s</ul>', 'container' => false, 'walker' => new clean_walker)); ?>
-        </div>
-    </div><!-- navigation -->
