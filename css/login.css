@@ -1,0 +1,15 @@
+/*
+	Custom Login
+	Author: FL1 Group - www.fl1gorup.com
+	Description: Style the WordPress Login page
+*/
+body.login { min-height:600px; background:url("../img/hoops-login.png") no-repeat center 85px;}
+.login #nav { color:#403F87 !important;}
+.login #nav a { color:#403F87 !important; text-decoration:none !important;}
+.login #nav a:hover { color:#403F87 !important; text-decoration:underline !important;}
+.login h1 a {background:url(../img/logo.png) no-repeat scroll 0 0 transparent; background-size:200px 123px; display:block; margin:0 auto 20px; width:200px; height:123px; padding:0;}
+#login { margin:0 auto;}
+.login #backtoblog a { color:#403F87 !important; text-decoration:none;}
+.login #backtoblog a:hover { color:#403F87 !important; text-decoration:underline;}
+
+.login #wp-submit { font-size:14px; font-weight:normal; padding:5px 20px; color:#fff; text-decoration:none; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; background:#403F87; border:none; cursor:pointer; font-family:Arial, Helvetica, sans-serif; line-height:16px;}

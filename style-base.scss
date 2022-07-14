@@ -1,0 +1,815 @@
+/*================================================================================================================*/
+/*                                                                                                                */
+/*                                                     SCSS                                                       */
+/*                                                                                                                */             
+/*================================================================================================================*/
+/* ----------------------------------------------------------- */
+/*                           IMPORTS                           */
+/* ----------------------------------------------------------- */
+/* Fonts */
+@import 'css/gotham';
+@import 'css/simple-line-icons';
+@import 'css/pe-icon-social';
+
+/* Owl */
+@import 'scripts/owl/owl.carousel';
+@import 'scripts/owl/owl.theme';
+@import 'scripts/owl/owl.transitions';
+
+/* Mmenu */
+@import 'scripts/mmenu/scss/jquery.mmenu.oncanvas';
+@import 'scripts/mmenu/scss/jquery.mmenu.positioning';
+@import 'scripts/mmenu/scss/addons/jquery.mmenu.offcanvas';
+
+/* Fancybox */
+@import 'scripts/fancybox/jquery.fancybox';
+
+
+/* ----------------------------------------------------------- */
+/*                           COLOURS                           */
+/* ----------------------------------------------------------- */
+$cyan: #09B1CA;
+$text: #323535;
+$white: #FFF;
+$navyblue: #104254;
+
+
+/* ----------------------------------------------------------- */
+/*                           MIXINS                            */
+/* ----------------------------------------------------------- */
+/***
+    RESPONSIVE BREAKPOINTS
+    Nest the media query in your selector like this:
+    Usage:@include breakpoint(medium) { width:80%; margin:-40% 0 0 -40%;}
+*/
+    @mixin breakpoint($point) {
+        /* iPad Global */
+        @if $point == ipad_g {
+            @media only screen and (max-width:939px) { @content; } 
+
+        /* iPad Portrait */
+        } @else if $point == ipad_p {
+            @media only screen and (min-width:768px) and (max-width:959px) { @content; } 
+        
+        /* iPhone Global */
+        } @else if $point == iphone_g { 
+            @media only screen and (max-width:767px) { @content; } 
+
+        /* iPhone Landscape */
+        } @else if $point == iphone_l { 
+            @media only screen and (min-width:480px) and (max-width:767px) { @content; } 
+
+        /* iPhone Portrait */
+        } @else if $point == iphone_p { 
+            @media only screen and (min-width:320px) and (max-width:767px) { @content; } 
+        }
+    }
+
+/* --------------------------------------------------------------------------------
+    FONT TYPE
+    Custom mixin for fonts. SImply append the type at the end.
+    Usage:@include font(mediumregular);
+*/
+    @mixin font($type) {
+        font-family:"gotham_"+$type+"regular";
+    }
+
+/* --------------------------------------------------------------------------------
+    BACKGROUND SIZE
+    Useful specially for full background images in a div.
+    Usage:@include background-size(cover);
+*/
+    @mixin background-size($size) {
+      -webkit-background-size:$size;
+          -ms-background-size:$size;
+           -o-background-size:$size;
+            -moz-background-size:$size;
+              background-size:$size;
+    }
+
+/* --------------------------------------------------------------------------------
+    BORDER RADIUS
+    Set every border radius or just a single side without worrying about all those prefixes.
+    Usage:@include border-radius(5px);
+    Usage:@include border-top-radius(10px);
+    Source:http://web-design-weekly.com/2013/05/12/handy-sass-mixins/
+
+*/
+    @mixin border-radius($radius) {
+        -webkit-border-radius:$radius;
+        border-radius:$radius;
+        background-clip:padding-box;  /* stops bg color from leaking outside the border:*/
+    }
+
+    /* Single side border-radius */
+    @mixin border-top-radius($radius) {
+        -webkit-border-top-right-radius:$radius;
+        border-top-right-radius:$radius;
+        -webkit-border-top-left-radius:$radius;
+        border-top-left-radius:$radius;
+        background-clip:padding-box;
+    }
+    @mixin border-right-radius($radius) {
+        -webkit-border-bottom-right-radius:$radius;
+        border-bottom-right-radius:$radius;
+        -webkit-border-top-right-radius:$radius;
+        border-top-right-radius:$radius;
+        background-clip:padding-box;
+    }
+    @mixin border-bottom-radius($radius) {
+        -webkit-border-bottom-right-radius:$radius;
+        border-bottom-right-radius:$radius;
+        -webkit-border-bottom-left-radius:$radius;
+        border-bottom-left-radius:$radius;
+        background-clip:padding-box;
+    }
+    @mixin border-left-radius($radius) {
+        -webkit-border-bottom-left-radius:$radius;
+        border-bottom-left-radius:$radius;
+        -webkit-border-top-left-radius:$radius;
+        border-top-left-radius:$radius;
+        background-clip:padding-box;
+    }
+
+
+/* --------------------------------------------------------------------------------
+    ANIMATIONS
+    Usage:
+
+    1. Define animation
+        @include keyframes(slide-down) {
+          0% { opacity:1; }
+          90% { opacity:0; }
+        }
+    
+    2. Include animation
+        @include animation(slide-down 5s 3);
+    
+    Adds cross-browser support for transitions.
+*/
+    @mixin keyframes($animation-name) {
+        @-webkit-keyframes $animation-name {
+            @content;
+        }
+        @-moz-keyframes $animation-name {
+            @content;
+        }  
+        @-ms-keyframes $animation-name {
+            @content;
+        }
+        @-o-keyframes $animation-name {
+            @content;
+        }  
+        @keyframes $animation-name {
+            @content;
+        }
+    }
+
+    @mixin animation($str) {
+        -webkit-animation:#{$str};
+        -moz-animation:#{$str};
+        -ms-animation:#{$str};
+        -o-animation:#{$str};
+        animation:#{$str};      
+    }
+
+/* --------------------------------------------------------------------------------
+    TRANSITIONS
+    Usage:@include transition(color .2s ease);
+    Adds cross-browser support for transitions.
+*/
+    @mixin transition($args...) {
+        -webkit-transition:$args;
+        -moz-transition:$args;
+        -ms-transition:$args;
+        -o-transition:$args;
+        transition:$args;
+    }
+
+/* --------------------------------------------------------------------------------
+    APPEREANCE
+    Usage:@include appearance(none);
+    Useful to remove the styling of form elements, like selects (currently not supported in Firefox).
+*/
+    @mixin appearance($type) {
+        -webkit-appearance:$type;
+           -moz-appearance:$type;
+                appearance:$type; 
+    }
+
+
+/* --------------------------------------------------------------------------------
+    CENTER ALIGN
+    Requires width or max-width to be set.
+    Usage:@include center-block;
+    Source:http://web-design-weekly.com/2013/05/12/handy-sass-mixins/
+*/
+    @mixin center-block {
+      display:block;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+
+/* --------------------------------------------------------------------------------
+    OPACITY
+    Set the opacity for all browsers and provide a filter fallback for IE8.
+    Usage:@include opacity(0.8);
+    Source:http://web-design-weekly.com/2013/05/12/handy-sass-mixins/
+*/
+    @mixin opacity($opacity) {
+      opacity:$opacity;
+      $opacity-ie:$opacity * 100;
+      filter:alpha(opacity=$opacity-ie); /*IE8*/
+    }
+
+
+/* --------------------------------------------------------------------------------
+    CLEARFIX
+    Add clearfix without having to add divs in your code.
+    Usage:@include clearfix();
+    Source:http://web-design-weekly.com/2013/05/12/handy-sass-mixins/
+*/
+    @mixin clearfix() {
+        &:before,
+        &:after {
+            content:"";
+            display:table;
+        }
+        &:after {
+            clear:both;
+        }
+    }
+
+/* --------------------------------------------------------------------------------
+    TEXT TRUNCATE
+    An easy way to truncate text with an ellipsis. Requires the element to be block or inline-block.
+    Usage:@include text-truncate;
+    Source:http://web-design-weekly.com/2013/05/12/handy-sass-mixins/
+*/
+    @mixin text-truncate {
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+
+/* --------------------------------------------------------------------------------
+    BOX SHADOW
+    An easy way to truncate create box shadows
+    Usage: @include box-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.075), inset);
+    Source: http://stackoverflow.com/questions/10435056/creating-a-box-shadow-mixin-using-sass
+*/
+    @mixin box-shadow($top, $left, $blur, $color, $inset:"") {
+        -webkit-box-shadow:$top $left $blur $color #{$inset};
+        -moz-box-shadow:$top $left $blur $color #{$inset};
+        box-shadow:$top $left $blur $color #{$inset};
+    }
+
+/* --------------------------------------------------------------------------------
+    BOX SIZING
+    Usage: @include box-sizing(border-box);
+    Source: http://css-tricks.com/box-sizing/
+*/
+    @mixin box-sizing($size) {
+      -webkit-box-sizing: $size; 
+      -moz-box-sizing: $size; 
+      box-sizing: $size;
+    }
+
+
+/*    
+    INDEX:
+    ------------------------------------
+    0. RESET
+
+    1. SETUP
+        1.1 Defaults
+        1.2 Common Tags
+
+    2. SITE STRUCTURE & APPEARANCE
+        2.1 Header
+            2.1.1 Logo
+            2.1.2 Topber 
+            2.1.3 Navigation 
+        2.2 Showcase
+        2.3 Container 
+            2.3.1 Featured
+            2.3.2 Blue-Box
+        2.4 Footer
+
+*/
+
+/*================================================================================================================*/
+/*                                                                                                                */
+/*                                                1. RESET                                                        */
+/*                                                                                                                */             
+/*================================================================================================================*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary, time, mark, audio, video { margin:0; padding:0; border:0; font-size:100%; font:inherit;}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section { display:block;}
+body { line-height:1;}
+ol, ul { list-style:none;}
+blockquote, q { quotes:none;}
+blockquote:before, blockquote:after,
+q:before, q:after { content:''; content:none;}
+table { border-collapse:collapse; border-spacing:0;}
+* { outline:none;}
+
+
+/*================================================================================================================*/
+/*                                                                                                                */
+/*                                                2. GLOBAL                                                       */
+/*                                                                                                                */             
+/*================================================================================================================*/
+/* 1.1 Defaults */
+h1, h2, h3, h4, h5, h6, strong { font-weight:bold;}
+i, em { font-style:italic;}
+.left { float:left;}
+.right { float:right;}
+.alignleft{ text-align:left; float:left; margin:0 10px 10px 0;}
+.alignright{ text-align:right; float:left; margin:0 0 10px 10px;}
+.aligncenter{ text-align:center;}
+.clear { clear:both; line-height:1px; height:1px;}
+textarea { overflow:auto; font-family:Arial, Helvetica, sans-serif; /* Body Font Family Will Come Here */}
+a { color:#333; text-decoration:none;}
+a:hover { color:#000;}
+address { font-style:normal;}
+img { max-width:100%; width:auto\9; height:auto; vertical-align:middle; border:0; -ms-interpolation-mode:bicubic;}
+#map * { max-width:none;}
+.sidebar #map { width:100%; height:250px;}
+
+.clearfix:before, .clearfix:after { display:table; content:'';}
+.clearfix:after { clear:both;}
+
+.pagination { clear:both; padding:5px 0; position:relative; font-size:14px; line-height:13px; overflow:hidden; margin:0;}
+.page-count { float:left; padding:5px 0;}
+.page-numbers { float:right;}
+.pagination span, .pagination a { display:block; float:left; margin:0; padding:7px 10px 6px; text-decoration:none; width:auto; color:#404040;}
+.pagination a:hover { background:#404040; color:#fff;}
+.pagination .current { padding:7px 10px 6px; background:$cyan; color:#fff;}
+
+
+/*================================================================================================================*/
+/*                                                                                                                */
+/*                                                    3. LAYOUT2                                                   */
+/*                                                                                                                */             
+/*================================================================================================================*/
+body { background:#fff; font-family:gotham_bookregular; font-size:14px; color:#323535; -webkit-text-size-adjust:none;
+}
+
+.box { width:940px; margin:0 auto; padding:0 10px; position:relative;
+    @include breakpoint(iphone_g) { width:300px;}
+}
+
+.mobile_nav { display:none; }
+
+/* 2.1 Header */
+.header { padding:13px 0 15px;
+    @include breakpoint(ipad_p) { border-bottom:5px $cyan solid;}
+    @include breakpoint(iphone_g) { border-bottom:5px $cyan solid; padding:5px 0px 5px;}
+
+    .header-right { float:right; width:245px; padding:30px 30px 0 0;
+        @include breakpoint(iphone_g) { display:none;}
+
+        .login-button {
+            font-size:12px; color:$cyan; line-height:29px; padding:0 19px; float:right; border:$cyan 2px solid; margin-left:17px; text-transform:uppercase;
+            &.download-demo { background:#efb613; border-color:#efb613; color:#fff;}
+
+            &:hover { background:$cyan; color:#fff; border:$cyan 2px solid;
+                &.download-demo { background:$navyblue; border-color:$navyblue; color:#fff;}
+            }
+        }
+
+        .site-search { float:right; margin-left:20px;
+            input[type="text"] { width:150px; border:1px solid $cyan; padding:10px; color:#434343; font-family:gotham_bookregular;}
+            input[type="submit"] { border:none; padding:10px; color:#fff; background:$cyan; font-family:gotham_mediumregular; text-transform:uppercase; cursor:pointer;}
+        }
+    }
+
+    .mobile_nav { display:none;
+        @include breakpoint(iphone_g) { display:block;}
+    }
+    .nav-icon { width:30px; float:left; padding:43px 32px 30px 0; display:none; position:relative;
+        @include breakpoint(iphone_g) { display:block;}
+
+        span { display:block; clear:both; background:$cyan; height:3px; margin-bottom:4px;}
+    }
+}
+
+/* 2.1.1 Logo */
+.logo { width:360px; float:left; padding:5px 0 0 1px;
+    @include breakpoint(iphone_g) { width:225px; padding:12px 0;}
+}
+
+
+/* 2.1.2 Topbar */
+.topbar { text-align:right; padding-bottom:21px;
+    .phone { font-size:18px; line-height:25px; float:right; display:inline-block; padding:15px 0 0;
+        span { width:26px; height:26px; float:left; margin-right:10px; font-size:18px; line-height:26px;}
+    }
+    .social { float:right;
+        ul { padding:0; margin:0; @include clearfix();
+            li { float:left;
+                a { color:#fff; display:block; text-align:center; width:30px; height:30px; text-align:center; background:$cyan; line-height:30px; margin:0 0 0 5px;
+                    &:hover { background:$navyblue; color:$cyan;}
+                }
+            }
+        }
+    }
+}
+
+/* 2.2 Showcase */
+.showcase, .slide { height:475px;
+    @include breakpoint(iphone_g) { height:320px;}
+}
+
+.showcase { text-align:center; position:relative;
+    .slide { background-position:center; @include background-size(cover); @include clearfix();}
+
+    .caption { background:url("img/bg_caption.png") repeat; width:465px; color:#323535; padding:14px 23px 0 17px; margin-top:70px; text-align:left;
+        @include breakpoint(iphone_g) { width:260px; margin-top:50px;}
+
+        h3 { font-size:24px; color:#323535; padding-bottom:10px; font-weight:normal; text-transform:uppercase;
+            @include breakpoint(iphone_g) { font-size:18px;}
+        }
+        p { font-size:16px; line-height:23px; padding-bottom:19px;
+            @include breakpoint(iphone_g) { font-size:14px; line-height:18px;}
+        }
+
+        .more-button { background:$cyan; font-size:16px; color:#fff; line-height:45px; padding:0 20px; margin:0 0 -45px -17px; text-transform:uppercase; display:inline-block; float:left;
+            &:hover { background:$navyblue; color:$cyan;}
+
+            @include breakpoint(iphone_g) { font-size:14px; line-height:38px;}
+        }
+    }
+    .owl-controls { position:absolute; bottom:20px; width:100%;
+        @include breakpoint(iphone_g) { bottom:10px;}
+
+        .owl-page { 
+            span { background:$navyblue; margin:3px; width:14px; height:14px;}
+        }
+    }
+
+    /* Inner */
+    &.inner { height:auto; background:$navyblue; @include background-size(cover); background-repeat:no-repeat; background-position:center; border-top: white solid 2px;
+        .box { height:auto;}
+        h1 { font-size:34px; font-weight:300; background:$navyblue; color:#fff; padding:60px 0; text-transform:uppercase; letter-spacing:-1px;
+            @include breakpoint(iphone_g) { font-size:20px; padding:30px 0; line-height:24px;}
+
+            span { display:block; font-size:18px; margin-top:5px;}
+        }
+    }
+
+    /* Contact */
+    &.contact { height:300px;
+        .box { height:300px;}
+    }
+}
+
+/* 2.3 Container */
+.container { clear:both; background:rgba(255, 255, 255, 0.9); padding-top:40px;}
+
+/* 2.3.1 Featured */
+.featured { padding-bottom:48px; margin-left:-20px;
+    @include breakpoint(iphone_g) { margin-left:0;}
+
+    li { width:300px; margin-left:20px; float:left; position:relative; margin-bottom:40px; border-bottom:3px lighten($text, 70%) solid; padding-bottom:20px;
+        @include breakpoint(iphone_g) { height:auto !important; float:none; margin-bottom:20px; margin-left:0; padding-bottom:0;}
+
+        h3 { font-size:15px; padding:10px; font-weight:normal; text-transform:uppercase; line-height:22px; min-height:45px;
+            a { color:$text;
+                &:hover { color:$cyan;}
+            }
+        }
+
+        p { font-size:14px; line-height:22px; padding:0 10px;}
+
+        .read-more { background:$cyan; font-size:12px; color:#fff; line-height:33px; display:inline-block; padding:0 14px; float:right; position:absolute; right:0; bottom:0; text-transform:uppercase;
+            &:hover { background:$navyblue; color:$cyan;}
+        }
+    }
+}
+
+.logos { padding:20px 0; border-top:1px #f0f0f0 solid;}
+
+/* 2.3.2 Blue-Box */
+.blue-box { background:#f2f5f8; padding:28px 0 38px; overflow:hidden; @include clearfix();
+    h3 { font-size:26px; color:$cyan; padding-bottom:18px; text-transform:uppercase;
+        a { color:$cyan;}
+    }
+    p { font-size:14px; color:#323535; line-height:16px; padding-bottom:37px;}
+
+    /* Video */
+    .video { width:400px; float:left;
+        @include breakpoint(iphone_g) { width:auto; float:none; margin-bottom:40px;}
+
+        a { display:block; width:100%; height:100%; position:relative; border:4px $navyblue solid;
+            span.icon { background:rgba($cyan, 0.7); color:#fff; font-size:30px; width:100px; height:100px; line-height:100px; text-align:center; display:block; @include border-radius(100px); position:absolute; z-index:10; left:35%; top:32%;
+            
+                &:before { margin-left:5px;}
+            }
+            .overlay { background:rgba($navyblue, 0.6); position:absolute; width:100%; height:100%; top:0; left:0; z-index:5;}
+        }
+    }
+
+    .news { width:400px; float:right;
+        @include breakpoint(iphone_g) { width:auto; float:none;}
+
+        .news-item { @include clearfix(); padding-bottom:20px; border-bottom:1px lighten($navyblue, 60%) solid; margin-bottom:20px;
+            &:last-child { margin-bottom:0; padding-bottom:0; border-bottom:none;}
+            .news-img { width:140px; float:left;
+                @include breakpoint(iphone_g) { width:80px;}
+            }
+            .news-content { padding-left:160px;
+                @include breakpoint(iphone_g) { padding-left:100px;}
+
+                h4 { font-size:16px; color:$cyan; padding-bottom:10px;
+                    a { color:$cyan;
+                        &:hover { color:$navyblue;}
+                    }
+                }
+                p { font-size:13px; line-height:19px; padding-bottom:0;}
+                span { display:block; padding-top:10px; color:$cyan; font-weight:600;}
+            }
+        }
+    }
+}
+
+
+
+/* 2.4 Footer */
+.footer { padding:30px 0 63px; border-top:$cyan 6px solid;
+    .column1st { width:230px; float:left;
+        @include breakpoint(iphone_g) { width:auto; float:none;}
+    }
+    .column2nd { width:808px; float:left; padding-bottom:72px;
+        ul { width:159px; float:left;}
+    }
+    h5 { font-size:16px; color:#323535; padding-bottom:22px;
+        @include breakpoint(iphone_g) { font-size:20px; cursor:pointer;}
+
+        span { display:none; float:right;
+            @include breakpoint(iphone_g) { display:block;}
+        }
+    }
+
+    ul {
+        @include breakpoint(iphone_g) { padding-bottom:20px;}
+
+        li { font-size:12px; line-height:17px; padding-bottom:5px;
+            a { color:#323535;
+                @include breakpoint(iphone_g) { font-size:16px;}
+
+                &:hover { color:#566f8c;}
+            }
+        }
+    }
+
+    p { font-size:11px; color:#a7b0bc; padding:20px 0 0;
+        a { color:#a7b0bc;
+            &:hover { color:#869fc1;}
+        }
+    }
+}
+
+.areas-we-cover { padding:30px 0 40px; border-top:1px #F0F0F0 solid; margin-top:30px;
+    h5 { color:#A0A7B1;}
+    ul { clear:both;}
+    li { float:left; width:125px; color:#A0A7B1; line-height:12px;}
+}
+
+
+/*================================================================================================================*/
+/*                                                                                                                */
+/*                                                   INNER                                                        */
+/*                                                                                                                */             
+/*================================================================================================================*/
+/* General content */
+.content { padding:0 0 60px;
+    h2 { font-size:26px; font-weight:normal; color:$cyan; line-height:26px; padding-bottom:20px;}
+    h3 { font-size:23px; font-weight:normal; color:$cyan; line-height:23px; padding-bottom:20px;}
+    h4 { font-size:20px; font-weight:normal; color:$cyan; line-height:20px; padding-bottom:18px;}
+    h5 { font-size:17px; font-weight:normal; color:$cyan; line-height:17px; padding-bottom:16px;}
+    h6 { font-size:15px; font-weight:normal; color:$cyan; line-height:15px; padding-bottom:14px;}
+    p { font-size:16px; color:#323535; line-height:26px; padding-bottom:20px;}
+    ul { margin:0 0 20px 30px;
+        li { font-size:16px; color:#323535; line-height:22px; padding-bottom:10px; list-style:disc;}
+    }
+    ol { margin:0 0 20px 30px;
+        li { font-size:16px; color:#323535; line-height:22px; padding-bottom:10px; list-style:decimal;}
+    }
+    a { color:$cyan;}
+
+    .flexible-content { padding-bottom:40px;}
+}
+
+.content-left { width:580px; float:left;
+    @include breakpoint(iphone_g) { width:auto; float:none;}
+
+    .single-img { margin-bottom:20px;}
+}
+
+/* Sidebar */
+.sidebar { width:300px; float:right;
+    .featured { margin-bottom:30px; padding-bottom:0;
+        ul { margin:0;
+            li { list-style:none !important; float:none; margin:0 0 20px 0; overflow:hidden; @include clearfix(); border-bottom:1px lighten($text, 70%) solid;
+                h3 { border-bottom:none; min-height:1px; height:60px; padding:0; line-height:16px;
+                    a { vertical-align:middle;}
+                }
+                a.featured-img { float:left; margin-right:20px;}
+            }
+        }
+    }
+}
+
+.widget { padding:0 0 40px 0; @include clearfix();
+    h3 { font-size:22px; color:$cyan; padding-bottom:13px; font-weight:normal;}
+    ul { position:relative; width:100%; margin:0;}
+    li {  font-size:14px; border-bottom:#e1e4e6 1px solid; padding:12px 0 12px 10px; list-style:none !important;
+        a { color:#323535; line-height:17px;  display:block;
+            &:hover { color:$cyan;}
+        }
+        &.current-cat { background:#F1F5F8;
+            a { color:$cyan; font-weight:600; background:#F1F5F8;}
+        }
+    }
+}
+
+.widget-free-text { padding:0 10px;
+    p { line-height:20px; font-size:13px;}
+}
+
+.tagcloud a { -webkit-border-radius:15px; -moz-border-radius:15px; border-radius:15px; font-size:12px !important; background:#F5F5F8; color:#323535; display:inline-block; padding:7px 10px; margin:0 0 5px 0;
+    &:hover { background:$cyan; color:#fff;}
+}
+
+.tab-content { padding:20px; border-bottom:1px #DAE0E6 solid; border-left:1px #DAE0E6 solid; border-right:1px #DAE0E6 solid;
+    p { font-size:16px; color:#323535; line-height:26px;}
+}
+
+h3.toggle { font-size:20px; padding:20px 10px; border-bottom:1px #DAE0E6 solid; cursor:pointer;
+    span { display:block; float:right; color:$navyblue;}
+    &.active { @include font(medium);}
+}
+
+.accordion-content { padding:20px 10px;
+    p { font-size:16px; color:#323535; line-height:26px;}
+    ul li { font-size:16px; color:#323535; line-height:22px;}
+}
+
+/* Blog */
+.article { padding-bottom:18px; margin-bottom:17px; border-bottom:1px solid #f0f0f0;
+    &.last { border-bottom:none;}
+    .imgb { width:94px; float:left; margin:0 13px 0 2px; overflow:hidden; 
+        @include breakpoint(iphone_g) { width:80px;}
+    }
+    .txtb { width:261px; float:left; padding:3px 0 0;
+        @include breakpoint(iphone_g) { width:200px;}
+
+        h4 { font-size:20px; margin-bottom:10px; line-height:19px; font-weight:normal;
+            a { text-decoration:none;  color:#222;
+                &:hover { color:$cyan;}
+            }
+        }
+    }
+    p { line-height:20px; font-size:14px;}
+    .readmore { font-size:14px; background:$cyan; color:#fff; float:right; display:inline-block; text-transform:uppercase; text-decoration:none; padding:8px 10px;
+        @include breakpoint(iphone_g) { float:none; padding:10px 0; margin-top:10px; display:block; clear:both; text-align:center;}
+
+        &:hover { background:#35475C; color:#fff; }
+    }
+    &.blog-cat {
+        .imgb { width:200px; position:relative; background:#F2F5F8;
+            @include breakpoint(iphone_g) { width:80px;}
+        }
+        .txtb { width:360px;
+            @include breakpoint(iphone_g) { width:200px;
+                h4 { padding-bottom:0; font-size:16px;}
+                p { display:none;}
+            }
+        }
+    }
+}
+
+.blog-date { width:30px; background:$cyan; display:block; float:left; padding:5px; color:#FFF; text-align:center; position:absolute; top:0; left:10px; }
+.blog-month { font-size:12px; text-transform:uppercase; }
+.blog-day { font-size:24px; }
+.article.blog-cat .date.finding { padding:11px 0 20px; display:block;
+    a { color:$cyan; font-size:12px;}
+}
+
+/* Children */
+.children ul { margin:0; padding:0;
+    li { padding-bottom:0; list-style:none;
+        a { display:block; padding:10px;  border-bottom:1px #f0f0f0 solid;}
+    }
+}
+
+ul.tabs li.active a { background:$cyan; color:#fff; border-left:1px $cyan solid; border-top:1px $cyan solid; border-right:1px $cyan solid; font-weight:600;}
+
+/* Search results */
+ul {
+    &.search-results { margin:0; padding:0; width:100%;
+        li { list-style:none; padding-bottom:0;
+            a { padding:10px 0; border-bottom:1px solid #f0f0f0; display:block; text-transform:uppercase; font-size:16px;
+                span { font-size:12px; display:block; clear:both; color:#777; text-transform:lowercase;}
+                &:hover { color:#323535;}
+            }
+        }
+    }
+    &.tabs { margin:0; padding:0; clear:both; width:100%; border-bottom:1px #DAE0E6 solid; overflow:hidden; display:block;
+        li { float:left; padding-bottom:0; list-style:none;
+            @include breakpoint(iphone_g) { width:auto; float:none;}
+
+            a { display:block; padding:10px 20px; margin-right:5px; text-align:center; border-left:1px #DAE0E6 solid; border-top:1px #DAE0E6 solid; border-right:1px #DAE0E6 solid; -webkit-border-top-left-radius:3px; -moz-border-top-left-radius:3px; border-top-left-radius:3px; -webkit-border-top-right-radius:3px; -moz-border-top-right-radius:3px; border-top-right-radius:3px; font-size:14px; color:#8296A7; background:#F1F5F8;
+                
+                @include breakpoint(iphone_g) { margin-right:0; @include border-radius(0);}
+            }
+        }
+    }
+}
+
+/*================================================================================================================*/
+/*                                                                                                                */
+/*                                                   FINDER                                                       */
+/*                                                                                                                */             
+/*================================================================================================================*/
+.finder-search { float:left; width:210px;
+    h3 { text-transform:uppercase;}
+    input[type="text"] { border:1px solid #ccc; padding:10px; box-sizing:border-box; width:100%; margin-bottom:10px;}
+    select { border:1px solid #ccc; padding:10px; width:100%; margin-bottom:10px;}
+    input[type="submit"] { background:$cyan; border:none; font-size:18px; font-family:gotham_boldregular; text-transform:uppercase; color:#FFF; padding:10px; width:100%; cursor:pointer;
+        &:hover { background:#323535;}
+    }
+}
+
+.finder-results { float:right; width:680px;
+    ul.finder-results-list { margin:0; padding:0;
+        li { list-style:none; padding-bottom:20px; margin-bottom:20px; border-bottom:1px #F2F5F8 solid;
+            h2 { font-size:22px; text-transform:uppercase;}
+            p { padding-bottom:5px; position:relative; padding-left:20px; line-height:20px;
+                span.item { display:inline-block; color:$cyan; margin-right:10px; position:absolute; top:0; left:0;}
+            }
+        }
+    }
+}
+
+
+/*================================================================================================================*/
+/*                                                                                                                */
+/*                                                   CONTACT                                                      */
+/*                                                                                                                */             
+/*================================================================================================================*/
+#map { height:300px;}
+
+ul.enquiry-form { margin:0; padding:0;
+    li { background:none; list-style:none; clear:both; margin:5px 0; position:relative; overflow:hidden;
+        h3 { color:#00b5dd; border-bottom:1px #ccc dashed; padding-bottom:5px; width:435px; font-size:25px;}
+        
+        label { font-family:gotham_bookregular; display:block;
+            &.lastname { display:block;}
+        }
+        
+        span {
+            &.input-half-wrapper { display:inline-block; width:47%; margin-right:10px; position:relative; float:left;}
+            &.wpcf7-form-control-wrap { display:block !important;
+            }
+        }
+        
+        small { font-size:11px; color:#888; display:block;}
+        
+        .wpcf7-list-item { display:block; clear:both;}
+        
+        .input-half { width:95%; border:1px solid #ccc; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666; padding:7px 5px;
+            &:focus { border:1px solid #999;}
+        }
+        
+        .input-full { width:94%; border:1px solid #ccc; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666; padding:7px 5px;
+            &:focus { border:1px solid #999;}
+        }
+        
+        .input-number { width:47%; border:1px solid #ccc; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666; padding:7px 5px;
+            &:focus { border:1px solid #999;}
+        }
+    }
+}
+.wpcf7-validation-errors { border:1px solid #fbb5b5 !important; font-size:12px !important; color:#e24f4f !important; background-color:#fce2e2 !important; padding:10px !important; text-align:center; margin:10px 0 30px !important;}
+.wpcf7-mail-sent-ok { border:1px solid #c3ed7b !important; font-size:12px !important; color:#629705 !important; background-color:#e7fdc1 !important; padding:10px !important; text-align:center; margin:10px 0 30px !important;}
+span.wpcf7-not-valid-tip { font-size:11px !important; left:6px !important; padding:2px !important; color:#ff7373 !important; border:none !important; background:#fff !important; width:184px !important;}
+ul.enquiry-form.landing-form li.submit-wrapper { width:auto;}
+
+
+/*================================================================================================================*/
+/*                                                                                                                */
+/*                                              SUPERFISH MENU                                                    */
+/*                                                                                                                */             
+/*================================================================================================================*/
+@import 'css/superfish';

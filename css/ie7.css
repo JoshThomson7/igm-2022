@@ -1,0 +1,14 @@
+.clearfix{
+	width:100%;
+	float:left;
+}
+.footer{
+	width:100%;
+	float:left;
+}
+.footer .column2nd{
+	width:748px;
+}
+.footer .column2nd ul{
+	width:149px;
+}

@@ -1,0 +1,65 @@
+/*
+Error: Undefined mixin 'breakpoint'.
+        on line 5 of /Users/alexmugica/Documents/PROJECTS/J9/website/wordpress/stuff/themes/j9w/css/superfish.scss, in `breakpoint'
+        from line 5 of /Users/alexmugica/Documents/PROJECTS/J9/website/wordpress/stuff/themes/j9w/css/superfish.scss
+
+1: /*
+2: 	Superfish SCSS
+3: *\/
+4: .primary-nav {
+5: 	@include breakpoint(ipad_p) { display:none;}
+6: 	@include breakpoint(iphone_p) { display:none;}
+7: 	ul { list-style:none; margin:0; padding:0;
+8: 		a { display: block; position: relative; }
+9: 		li { list-style:none; margin:0; padding:0; position:relative;
+10: 			&:hover { visibility: inherit; /* fixes IE7 'sticky bug' *\/ }
+
+Backtrace:
+/Users/alexmugica/Documents/PROJECTS/J9/website/wordpress/stuff/themes/j9w/css/superfish.scss:5:in `breakpoint'
+/Users/alexmugica/Documents/PROJECTS/J9/website/wordpress/stuff/themes/j9w/css/superfish.scss:5
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:348:in `block in visit_mixin'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/stack.rb:98:in `block in with_mixin'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/stack.rb:115:in `with_frame'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/stack.rb:98:in `with_mixin'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:346:in `visit_mixin'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/stack.rb:79:in `block in with_base'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/stack.rb:115:in `with_frame'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/stack.rb:79:in `with_base'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:430:in `block (2 levels) in visit_rule'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:430:in `map'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:430:in `block in visit_rule'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:428:in `visit_rule'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/stack.rb:79:in `block in with_base'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/stack.rb:115:in `with_frame'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/stack.rb:79:in `with_base'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/base.rb:52:in `map'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/root_node.rb:20:in `render'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/engine.rb:268:in `render'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/exec/sass_scss.rb:415:in `run'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/exec/sass_scss.rb:63:in `process_result'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/exec/base.rb:52:in `parse'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/exec/base.rb:19:in `parse!'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/bin/scss:13:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined mixin 'breakpoint'.\A         on line 5 of /Users/alexmugica/Documents/PROJECTS/J9/website/wordpress/stuff/themes/j9w/css/superfish.scss, in `breakpoint'\A         from line 5 of /Users/alexmugica/Documents/PROJECTS/J9/website/wordpress/stuff/themes/j9w/css/superfish.scss\A \A 1: /*\A 2: 	Superfish SCSS\A 3: */\A 4: .primary-nav {\A 5: 	@include breakpoint(ipad_p) { display:none;}\A 6: 	@include breakpoint(iphone_p) { display:none;}\A 7: 	ul { list-style:none; margin:0; padding:0;\A 8: 		a { display: block; position: relative; }\A 9: 		li { list-style:none; margin:0; padding:0; position:relative;\A 10: 			&:hover { visibility: inherit; /* fixes IE7 'sticky bug' */ }"; }
