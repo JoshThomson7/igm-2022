@@ -34,7 +34,7 @@
 .primary-nav ul li li li li.sfHover ul { left:248px; /* match .nav ul width */ top: 0;  }
 
 /* Primary Navigation Skin  */
-.primary-nav { background:$cyan; width:100%; border-top:1px #f0f0f0 solid;
+.primary-nav { background:$secondary; width:100%; border-top:1px #f0f0f0 solid;
 	&.left { padding-left:8px;}
 
 	ul { width:100%; display:table;
@@ -52,7 +52,7 @@
 
 			/* 2nd level skin */
 			&.sfHover { 
-				ul { background:darken($cyan, 5%); width:250px; height:auto; z-index:9999; padding:0; display:block;
+				ul { background:darken($secondary, 5%); width:250px; height:auto; z-index:9999; padding:0; display:block;
 					li { float:none; height:auto; padding:0; line-height:20px; margin-left:0; display:block; text-align:left;
 						a { padding:13px 10px 10px; display:block; color:#fff; text-transform:none; border-left:2px $navyblue solid; background:none; border-bottom:none;
 							&:hover { color:$navyblue;}

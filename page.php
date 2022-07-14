@@ -86,8 +86,8 @@ if(get_field('page_fullwidth')) {
                                                     $gallery_img = vt_resize($attachment_id,'' , 300, 380, true);
                                                     $gallery_img_org = vt_resize($attachment_id,'' , 1200, 1200, false);
                                                 ?>
-                                                    <li data-src="<?php echo $gallery_img_org[url]; ?>">
-                                                        <a href="#" title=""><img src="<?php echo $gallery_img[url]; ?>" /></a>
+                                                    <li data-src="<?php echo $gallery_img_org['url']; ?>">
+                                                        <a href="#" title=""><img src="<?php echo $gallery_img['url']; ?>" /></a>
                                                     </li>
                                                 <?php endforeach; ?>
                                         <?php endif; ?>

@@ -32,7 +32,7 @@
 
             <div class="logo">
                 <a href="<?php bloginfo('url'); ?>" title="<?php bloginfo('name'); ?>">
-                    <img src="<?php bloginfo('stylesheet_directory'); ?>/img/logo.png" alt="<?php bloginfo('name'); ?>" />
+                    <img src="<?php bloginfo('stylesheet_directory'); ?>/img/new-logo.gif" alt="<?php bloginfo('name'); ?>" />
                 </a>
             </div><!-- logo -->
 
@@ -48,7 +48,14 @@
                         </div><!-- social -->
                     <?php endif; ?>
 
-                    <?php if(get_field('contact_phone', 27)): ?><div class="phone"><span class="icon-call-out"></span><?php the_field('contact_branch','27'); ?>: <?php the_field('contact_phone', 27); ?><br><?php the_field('contact_branch2','27'); ?>: <?php the_field('contact_phone2', 27); ?><br><?php the_field('contact_branch3','27'); ?>: <?php the_field('contact_mobile3', 27); ?></div><?php endif; ?>
+                    <?php if(get_field('contact_phone', 27)): ?>
+                        <div class="phone">
+                            <span class="icon-call-out"></span>
+                            <p><?php the_field('contact_branch','27'); ?>: <?php the_field('contact_phone', 27); ?></p>
+                            <p><?php the_field('contact_branch2','27'); ?>: <?php the_field('contact_phone2', 27); ?></p>
+                            <p><?php the_field('contact_branch3','27'); ?>: <?php the_field('contact_mobile3', 27); ?></p>
+                        </div>
+                    <?php endif; ?>
                 </div><!-- topbar -->
             </div><!-- header-right -->
         </div>

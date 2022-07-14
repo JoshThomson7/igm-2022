@@ -12,7 +12,7 @@ get_header(); ?>
                 $attachment_id = get_sub_field('home_banner_image');
                 $banner_image = vt_resize( $attachment_id,'' , 1057, 411, true ); // Set to false if you don't want to crop the image
             ?>
-                <div class="slide" style="background-image:url(<?php echo $banner_image[url]; ?>);">
+                <div class="slide" style="background-image:url(<?php echo $banner_image['url']; ?>);">
 			        <div class="box">
 			            <div class="caption">
 			            	<h3><?php the_sub_field('home_banner_caption_heading'); ?></h3>
@@ -35,7 +35,7 @@ get_header(); ?>
 		                $box_image = vt_resize($attachment_id,'' , 300, 150, true);
 		            ?>
 	                	<li>
-	                    	<a href="<?php the_sub_field('home_box_button_link'); ?>" title="<?php the_sub_field('home_box_heading'); ?>"><img src="<?php echo $box_image[url]; ?>" alt="<?php the_sub_field('home_box_heading'); ?>" /></a>
+	                    	<a href="<?php the_sub_field('home_box_button_link'); ?>" title="<?php the_sub_field('home_box_heading'); ?>"><img src="<?php echo $box_image['url']; ?>" alt="<?php the_sub_field('home_box_heading'); ?>" /></a>
 	                    	<h3><a href="<?php the_sub_field('home_box_button_link'); ?>" title="<?php the_sub_field('home_box_heading'); ?>"><?php the_sub_field('home_box_heading'); ?></a></h3>
 	                        <?php if(get_sub_field('home_box_content')): ?><p><?php the_sub_field('home_box_content'); ?></p><?php endif; ?>
 	                        

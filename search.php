@@ -44,7 +44,7 @@ global $post;
                                 $box_image = vt_resize($attachment_id,'' , 300, 135, true);
                             ?>
                                 <li>
-                                    <img src="<?php echo $box_image[url]; ?>" alt="<?php the_sub_field('home_box_heading'); ?>" />
+                                    <img src="<?php echo $box_image['url']; ?>" alt="<?php the_sub_field('home_box_heading'); ?>" />
                                     <h3><a href="<?php the_sub_field('home_box_heading'); ?>" title="<?php the_sub_field('home_box_heading'); ?>"><?php the_sub_field('home_box_heading'); ?></a></h3>
                                     <p><?php the_sub_field('home_box_content'); ?></p>
                                     <a href="<?php the_sub_field('home_box_button_link'); ?>" title="<?php the_sub_field('home_box_button_label'); ?>" class="read-more"><?php the_sub_field('home_box_button_label'); ?></a>

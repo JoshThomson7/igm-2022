@@ -29,7 +29,7 @@ global $post;
                                         $attachment_id = get_post_thumbnail_id( $post->ID ); 
                                         $article_img = vt_resize( $attachment_id,'' , 200, 200, true ); // Set to false if you don't want to crop the image 
                                     ?>
-                                        <img src="<?php echo $article_img[url]; ?>" alt="<?php the_title(); ?>" />
+                                        <img src="<?php echo $article_img['url']; ?>" alt="<?php the_title(); ?>" />
                                     <?php else: ?>
                                         <img src="<?php bloginfo('stylesheet_directory'); ?>/img/news-holder.jpg" alt="<?php the_title(); ?>" />
                                     <?php endif; ?>

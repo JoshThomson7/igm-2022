@@ -22,7 +22,7 @@
                         ?>
                             <div class="news-item">
                                 <div class="news-img">
-                                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><img src="<?php echo $news_img[url]; ?>" alt="<?php the_title(); ?>" /></a>
+                                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><img src="<?php echo $news_img['url']; ?>" alt="<?php the_title(); ?>" /></a>
                                 </div><!-- news-img -->
 
                                 <div class="news-content">
@@ -51,9 +51,11 @@
             <?php endwhile; ?>
 
             <div class="clear"></div>
-
-            <p>&copy; <?php echo date("Y"); ?> <?php bloginfo('name'); ?>. All rights reserved &bull; <a href="http://www.fl1digital.com" title="Website by FL1 Digital" target="_blank">Website by FL1 Digital</a> </p>
         </div><!-- footer -->
+
+        <div class="subfooter">
+            <p>&copy; <?php echo date("Y"); ?> <?php bloginfo('name'); ?>. All rights reserved &bull; <a href="http://www.fl1digital.com" title="Website by FL1 Digital" target="_blank">Website by FL1 Digital</a> </p>
+        </div>
     </div>
 
 	<?php wp_footer(); ?>

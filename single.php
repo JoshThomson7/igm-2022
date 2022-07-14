@@ -26,7 +26,7 @@ global $post;
                         $attachment_id = get_post_thumbnail_id($post->ID);
                         $banner_image = vt_resize( $attachment_id,'' , 580, 300, true ); // Set to false if you don't want to crop the image
                     ?>
-                       <div class="single-img"><img src="<?php echo $banner_image[url]; ?>" alt="<?php the_sub_field('home_banner_caption_heading'); ?>" /></div>
+                       <div class="single-img"><img src="<?php echo $banner_image['url']; ?>" alt="<?php the_sub_field('home_banner_caption_heading'); ?>" /></div>
                     <?php endif; ?>
 
                     <?php while(have_posts()) : the_post(); ?>

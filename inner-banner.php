@@ -5,7 +5,7 @@
         }
     ?>
 
-    <div class="showcase inner" style="background-image:url(<?php echo $banner_image[url]; ?>);">
+    <div class="showcase inner" style="background-image:url(<?php echo $banner_image['url']; ?>);">
         <div class="box">
 
             <?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
