@@ -51,7 +51,6 @@
                     </div><!-- column1st -->
                 <?php endwhile; ?>
 
-                <div class="clear"></div>
             </div><!-- footer -->
 
             <div class="subfooter">
