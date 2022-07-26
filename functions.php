@@ -41,6 +41,8 @@ function hide_email($email) {
 	$script = '<script type="text/javascript">/*<![CDATA[*/'.$script.'/*]]>*/</script>'; return '<span id="'.$id.'">[javascript protected email address]</span>'.$script; 
 }
 
+// INCLUDE FLEX CONTENT
+include('modules/flexible-content/functions/fc-functions.php');
 
 // Get top parent ID
 function get_top_parent_page_id() {

@@ -31,8 +31,15 @@
 
 $primary: #0D1525;
 $secondary: #95b8db;
-
+$tertiary: #95b8db;
+$quaternary: #95b8db;
+$lightgrey: #e4eaf1;
+$textLight: #69749b;
 $text: $secondary;
+
+$border: darken($lightgrey, 3%);
+$borderDark: lighten($text, 35%);
+
 $white: #FFF;
 $navyblue: #104254;
 
@@ -64,8 +71,41 @@ $navyblue: #104254;
         /* iPhone Portrait */
         } @else if $point == iphone_p { 
             @media only screen and (min-width:320px) and (max-width:767px) { @content; } 
+
+        } @else if $point == grandpabear or $point == 1200 {
+            @media (max-width: 1200px) { @content; }
         }
+        @else if $point == grandmabear or $point == 1100 {
+            @media (max-width: 1100px)  { @content; }
+        }
+        @else if $point == papabear or $point == 1024 {
+            @media (max-width: 1024px)  { @content; }
+        }
+        @else if $point == brotherbear or $point == 900 {
+            @media (max-width: 900px)  { @content; }
+        }
+        @else if $point == cousinbear or $point == 800 {
+            @media (max-width: 800px)  { @content; }
+        }
+        @else if $point == mamabear or $point == 700 {
+            @media (max-width: 700px)  { @content; }
+        }
+        @else if $point == teenbear or $point == 650 {
+            @media (max-width: 650px)  { @content; }
+        }
+        @else if $point == sisterbear  or $point == 550{
+            @media (max-width: 550px)  { @content; }
+        }
+        @else if $point == babybear or $point == 400 {
+            @media (max-width: 400px)  { @content; }
+
+        } @else {
+            @media (max-width: $point)  { @content; }
+        }  
     }
+
+/* Flex Content */
+@import 'modules/flexible-content/scss/flexible-content';
 
 /* --------------------------------------------------------------------------------
     FONT TYPE
@@ -367,6 +407,12 @@ img { max-width:100%; width:auto\9; height:auto; vertical-align:middle; border:0
 body { background:$primary; font-family:gotham_bookregular; font-size:14px; color:$secondary; -webkit-text-size-adjust:none;
 }
 
+.max__width { max-width: 1400px; margin: 0 auto; width: 100%; padding: 0 20px; box-sizing: border-box;
+    @include breakpoint(cousinbear){
+        padding: 0 20px;
+    }
+}
+
 .box { width:1200px; margin:0 auto; padding:0 10px; position:relative;
     @include breakpoint(iphone_g) { width:300px;}
 }
@@ -432,14 +478,14 @@ body { background:$primary; font-family:gotham_bookregular; font-size:14px; colo
 }
 
 /* 2.2 Showcase */
-.showcase, .slide { height:475px;
+.showcase, .slide { height:580px;
     @include breakpoint(iphone_g) { height:320px;}
 }
 
 .showcase { text-align:center; position:relative;
-    .slide { background-position:center; @include background-size(cover); @include clearfix();}
+    .slide { background-position:center; @include background-size(cover); @include clearfix(); display: flex; align-items: center;}
 
-    .caption { color:white; margin-top:70px; text-align:left; width: 50%;
+    .caption { color:white; text-align:left; width: 50%;
         @include breakpoint(iphone_g) { margin-top:50px;}
 
         h3 { font-size:34px; color:white; padding-bottom:10px; font-weight:normal; text-transform:uppercase; line-height: 46px;
@@ -630,6 +676,7 @@ body { background:$primary; font-family:gotham_bookregular; font-size:14px; colo
     .flexible-content { padding-bottom:40px;}
 }
 
+
 .content-left { width: 60%; float:left;
     @include breakpoint(iphone_g) { width:auto; float:none;}
 
@@ -662,6 +709,7 @@ ul.lightGallery li{
 .widget { padding:0 0 40px 0; @include clearfix();
     h3 { font-size:22px; color:$secondary; padding-bottom:13px; font-weight:normal;}
     ul { position:relative; width:100%; margin:0;}
+    p { line-height: 20px;}
     li {  font-size:14px; border-bottom:#e1e4e6 1px solid; padding:12px 0 12px 10px; list-style:none !important;
         a { color:$secondary; line-height:17px;  display:block;
             &:hover { color:$secondary;}
