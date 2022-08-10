@@ -17,7 +17,7 @@ Accordion
 
     <div class="accordion__wrap">
 
-        <h3 class="toggle"><?php the_sub_field('accordion_heading'); ?> <span class="fal fa-chevron-down"></h3>
+        <h3 class="toggle"><?php the_sub_field('accordion_heading'); ?> <span class="icon-plus"></h3>
 
         <div class="accordion__content">
             <?php echo apply_filters('the_content', get_sub_field('accordion_content')); ?>

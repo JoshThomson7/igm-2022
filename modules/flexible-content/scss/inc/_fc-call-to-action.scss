@@ -15,7 +15,9 @@
         article { width: 400px; position: relative; z-index: 2;
             @include breakpoint(mamabear) { text-align: center; margin-bottom: 20px; width: 100%;}
 
-            h2 { font-size: 40px; color: #fff; margin: 0;}
+            h2 { font-size: 40px; color: #fff; margin: 0;
+                @include breakpoint(600) {font-size: 30px; }
+            }
             p { font-size: 18px; padding-top: 20px; margin: 0; color: #fff;}
         }
 

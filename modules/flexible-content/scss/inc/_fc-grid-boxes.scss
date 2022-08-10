@@ -6,9 +6,7 @@
 
     .grid__boxes__wrapper { display: flex; flex-wrap: wrap; justify-content: center;
         article { display: flex; position: relative; overflow: hidden; min-width: 300px; 
-            @include breakpoint(mamabear){
-                width: 100%!important;
-            }
+            @include breakpoint(700){width: 100%!important; margin-bottom: 20px;}
 
             .grid__box__image { background-size: cover; background-position: center; background-repeat: no-repeat; width: percentage(1/2); position: relative; width: 100%; transition: all .8s ease; transform: scale(1); margin-bottom: 10px;
                 a { display: block;}

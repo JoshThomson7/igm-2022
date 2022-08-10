@@ -29,9 +29,9 @@ if(get_field('page_fullwidth')) {
 
                 <?php
                     // Sidebar
-                    if(!get_field('page_fullwidth')) {
-                        include('sidebar-page.php');
-                    }
+                    // if(!get_field('page_fullwidth')) {
+                    //     include('sidebar-page.php');
+                    // }
                 ?>
 
                 <div class="clear"></div>

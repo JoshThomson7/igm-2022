@@ -38,7 +38,8 @@ global $post;
 
                 <div class="sidebar">
                     <?php get_sidebar('Blog'); ?>
-                </div><!-- sidebar -->
+                </div>
+                <!-- sidebar -->
 
                 <div class="clear"></div>
             </div><!-- content -->

@@ -28,7 +28,6 @@
 
     <div class="header clearfix">
         <div class="box">
-            <a href="#mobile_nav" title="Navigation" class="nav-icon"><span></span><span></span><span></span></a>
 
             <div class="logo">
                 <a href="<?php bloginfo('url'); ?>" title="<?php bloginfo('name'); ?>">
@@ -56,6 +55,8 @@
                             <p><?php the_field('contact_branch3','27'); ?>: <?php the_field('contact_mobile3', 27); ?></p>
                         </div>
                     <?php endif; ?>
+
+                    <a href="#mobile_nav" title="Navigation" class="nav-icon"><span></span><span></span><span></span></a>
 
                     <div class="primary-nav clearfix">
                         <?php wp_nav_menu(array('menu' => 'Main Menu', 'items_wrap' => '<ul>%3$s</ul>', 'container' => false, 'walker' => new clean_walker)); ?>

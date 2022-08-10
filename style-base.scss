@@ -413,8 +413,8 @@ body { background:$primary; font-family:gotham_bookregular; font-size:14px; colo
     }
 }
 
-.box { width:1200px; margin:0 auto; padding:0 10px; position:relative;
-    @include breakpoint(iphone_g) { width:300px;}
+.box { max-width:1200px; margin:0 auto; padding:0 10px; position:relative;
+    // @include breakpoint(iphone_g) { width:300px;}
 }
 
 .mobile_nav { display:none; }
@@ -427,7 +427,7 @@ body { background:$primary; font-family:gotham_bookregular; font-size:14px; colo
     .box{display: flex; align-items: center; justify-content: space-between;}
 
     .header-right {
-        @include breakpoint(iphone_g) { display:none;}
+        // @include breakpoint(iphone_g) { display:none;}
 
         .login-button {
             font-size:12px; color:$secondary; line-height:29px; padding:0 19px; float:right; border:$secondary 2px solid; margin-left:17px; text-transform:uppercase;
@@ -444,11 +444,11 @@ body { background:$primary; font-family:gotham_bookregular; font-size:14px; colo
         }
     }
 
-    .mobile_nav { display:none;
-        @include breakpoint(iphone_g) { display:block;}
-    }
+    // .mobile_nav { display:none;
+    //     @include breakpoint(iphone_g) { display:block;}
+    // }
     .nav-icon { width:30px; float:left; padding:43px 32px 30px 0; display:none; position:relative;
-        @include breakpoint(iphone_g) { display:block;}
+        @include breakpoint(1100) { display:block;}
 
         span { display:block; clear:both; background:$secondary; height:3px; margin-bottom:4px;}
     }
@@ -463,6 +463,7 @@ body { background:$primary; font-family:gotham_bookregular; font-size:14px; colo
 /* 2.1.2 Topbar */
 .topbar {
     .phone { font-size:15px; line-height:20px; display:inline-block; color: $secondary; display: flex;
+        @include breakpoint(1100) { display:none;}
         span { width:26px; height:26px; float:left; margin-right:10px; font-size:18px; line-height:26px;}
         p{padding-left: 20px;}
     }
@@ -485,22 +486,28 @@ body { background:$primary; font-family:gotham_bookregular; font-size:14px; colo
 .showcase { text-align:center; position:relative;
     .slide { background-position:center; @include background-size(cover); @include clearfix(); display: flex; align-items: center;}
 
-    .caption { color:white; text-align:left; width: 50%;
-        @include breakpoint(iphone_g) { margin-top:50px;}
+    .box{
+        // @include breakpoint(iphone_g) { width:100%!important;}
 
-        h3 { font-size:34px; color:white; padding-bottom:10px; font-weight:normal; text-transform:uppercase; line-height: 46px;
-            @include breakpoint(iphone_g) { font-size:18px;}
-        }
-        p { font-size:16px; line-height:23px; padding:20px 0 40px; color: white;
-            @include breakpoint(iphone_g) { font-size:14px; line-height:18px;}
-        }
-
-        .more-button { background:$secondary; font-size:16px; color:$primary; line-height:45px; padding:5px 30px; text-transform:uppercase; display:inline-block; float:left; border-radius: 5px;
-            &:hover { background:$navyblue; color:$secondary;}
-
-            @include breakpoint(iphone_g) { font-size:14px; line-height:38px;}
+        .caption { color:white; text-align:left; width: 50%;
+            @include breakpoint(900) { width: 80%;}
+            @include breakpoint(500) { width: 100%;} 
+    
+            h3 { font-size:34px; color:white; padding-bottom:10px; font-weight:normal; text-transform:uppercase; line-height: 46px;
+                @include breakpoint(iphone_g) { font-size:22px; line-height: 30px;}
+            }
+            p { font-size:16px; line-height:23px; padding:20px 0 40px; color: white;
+                @include breakpoint(iphone_g) { font-size:14px; line-height:18px;}
+            }
+    
+            .more-button { background:$secondary; font-size:16px; color:$primary; line-height:45px; padding:5px 30px; text-transform:uppercase; display:inline-block; float:left; border-radius: 5px;
+                &:hover { background:$navyblue; color:$secondary;}
+    
+                @include breakpoint(iphone_g) { font-size:14px; line-height:38px;}
+            }
         }
     }
+
     .owl-controls { position:absolute; bottom:20px; width:100%;
         @include breakpoint(iphone_g) { bottom:10px;}
 
@@ -612,18 +619,21 @@ body { background:$primary; font-family:gotham_bookregular; font-size:14px; colo
 
 /* 2.4 Footer */
 .footer { padding:30px 0 20px; border-top:$secondary 6px solid; display: flex; justify-content: space-between;
+    @include breakpoint(650) { flex-direction: column;}
+
     .column1st { width:25%;
-        @include breakpoint(iphone_g) { width:auto; float:none;}
+        @include breakpoint(iphone_g) { width:33%; float:none;}
+        @include breakpoint(650) { width: 100%;}
     }
     .column2nd { width:808px; float:left; padding-bottom:72px;
         ul { width:159px; float:left;}
     }
 
     h5 { font-size:16px; padding-bottom:22px; color: white; text-transform: uppercase;
-        @include breakpoint(iphone_g) { font-size:20px; cursor:pointer;}
+        @include breakpoint(iphone_g) { font-size:18px; cursor:pointer; display: flex;}
 
         span { display:none; float:right;
-            @include breakpoint(iphone_g) { display:block;}
+            @include breakpoint(iphone_g) { display:block; padding-left: 5px;}
         }
     }
 
@@ -666,10 +676,10 @@ body { background:$primary; font-family:gotham_bookregular; font-size:14px; colo
     h6 { font-size:15px; font-weight:normal; color:$secondary; line-height:15px; padding-bottom:14px;}
     p { font-size:16px; line-height:26px; padding-bottom:20px;}
     ul { margin:0 0 20px 30px;
-        li { font-size:16px; line-height:22px; padding-bottom:10px; list-style:disc; color: $secondary;}
+        li { font-size:16px; line-height:22px; list-style:disc; color: $secondary;}
     }
     ol { margin:0 0 20px 30px;
-        li { font-size:16px; line-height:22px; padding-bottom:10px; list-style:decimal;}
+        li { font-size:16px; line-height:22px; list-style:decimal;}
     }
     a { color:$secondary;} 
 
@@ -677,14 +687,14 @@ body { background:$primary; font-family:gotham_bookregular; font-size:14px; colo
 }
 
 
-.content-left { width: 60%; float:left;
-    @include breakpoint(iphone_g) { width:auto; float:none;}
+.content-left { width: 100%;
+    // @include breakpoint(iphone_g) { width:auto; float:none;}
 
     .single-img { margin-bottom:20px;}
 }
 
 /* Sidebar */
-.sidebar { width:35%; float:right;
+.sidebar { width:35%; float:right; display: none;
     .featured { margin-bottom:30px; padding-bottom:0;
         ul { margin:0; display: flex; flex-direction: column;
             li { list-style:none !important; float:none; margin:0 0 20px 0; overflow:hidden; @include clearfix(); border-bottom:1px lighten($text, 70%) solid; width: 100%;
